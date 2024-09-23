@@ -27,3 +27,6 @@ Firstly i have used a manual uploading of a sample downloaded zipped file from E
 
 ### Step 2:
 Now I have taken 2 datasets i.e cases_and_deaths, hospial_admissions which are uploaded in the GitHub repository under Covid19-Europe-Project/main-csv-data-files (These are the same files available in ECDC website). For connecting to these files in ADF i have used  https: Linked Service(ls_http_opendata_ecdc_europa_eu) and gave my base url name to it. Since I wanted to create ingest both the datasets into ADLS gen2 at a time, I created a json file with  files and created parameterized datset and with the help of Lookup acivity and ForEach activity and i was able to successfully ingest the data into the ADLS gen2.
+
+![image](https://github.com/user-attachments/assets/0f08f8d5-057d-473e-9f8a-86f765e3a27b)
+
