@@ -85,6 +85,11 @@ Finally created triggers (Tumbling window trigger) to trigger for the particular
 
 ![image](https://github.com/user-attachments/assets/eda80e7b-eb7e-4b48-a7e1-c135a32dc0a8)
 
+Below is one example of the pipeline run in Monitor 
+
+![image](https://github.com/user-attachments/assets/3fd17255-c9a9-4c40-a07d-79f65575eaa3)
+
+
 
 
 
