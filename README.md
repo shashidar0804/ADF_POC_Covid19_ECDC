@@ -60,7 +60,15 @@ Below are the transformations done:
 Similar transformations were done like the cases and deaths except below extra ones:
 1. Split Transformations to split the weekly data with daily data (indicator == "Weekly new hospital admissions per 100k" || indicator == "Weekly new ICU admissions per 100k"). The data that doesnt match the condfition goes to daily file
 2. Before joining to the Dim date source file there is the aggregation done on the file to get the week start and end date for every week with group by (year+"-W"+lpad(week_of_year,2,'0')) and week start as min(date) and week end date as max(date)
-3. On Weekly and Daily splits similar kinds of Pivot transformatopns are applied to get the necessary counts and finally sorting is done and populated to the Sink which is SQL Server
+3. On Weekly and Daily splits similar kinds of Pivot transformations are applied to get the necessary counts and finally sorting is done and populated to the Sink which is SQL Server
+
+
+### Step 4:
+After we did transformation according to the project requirement, the data is in the SQL database, so that Data Analysts can query data directly from the database by using PowerBi/Tableau or any other data visualization tool for analysis purpose. Data visualization part is not done in this POC
+
+![image](https://github.com/user-attachments/assets/8527f888-fb02-4785-b5d5-1f7030decab8)
+
+![image](https://github.com/user-attachments/assets/4b6433c4-7712-4cb2-9463-ac04d5d70d3a)
 
 
 
