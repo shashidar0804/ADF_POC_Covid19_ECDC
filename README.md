@@ -78,7 +78,10 @@ After we did transformation according to the project requirement, the data is in
 ![image](https://github.com/user-attachments/assets/4b6433c4-7712-4cb2-9463-ac04d5d70d3a)
 
 
-Finally created triggers (Tumbling window trigger) to trigger for the particular point in time for every 
+Finally created triggers (Tumbling window trigger) to trigger for the particular point in time for every step except visualization and added dependencies with the previous trigger. For example process cases and deaths trigger depends on ingest ecdc data trigger and so on
+
+![image](https://github.com/user-attachments/assets/caf6e9bc-3446-4328-9968-a29a715b5852)
+
 
 ![image](https://github.com/user-attachments/assets/eda80e7b-eb7e-4b48-a7e1-c135a32dc0a8)
 
