@@ -77,6 +77,8 @@ Created two pipelines (pl_sqlize_cases_and_deaths and pl_sqlize_hospitals_admiss
 After we did transformation according to the project requirement, the data is in the SQL database, so that Data Analysts can query data directly from the database by using PowerBi/Tableau or any other data visualization tool for analysis purpose. Data visualization part is not done in this POC
 
 
+
+### Triggers
 Finally created triggers (Tumbling window trigger) to trigger for the particular point in time for every step except visualization and added dependencies with the previous trigger. For example process cases and deaths trigger depends on ingest ecdc data trigger and so on
 
 ![image](https://github.com/user-attachments/assets/caf6e9bc-3446-4328-9968-a29a715b5852)
