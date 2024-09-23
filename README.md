@@ -30,3 +30,8 @@ Now I have taken 2 datasets i.e cases_and_deaths, hospial_admissions which are u
 
 ![image](https://github.com/user-attachments/assets/0f08f8d5-057d-473e-9f8a-86f765e3a27b)
 
+### Step 3:
+Once right after the required data ingested into the ADLS gen2 storage, I have created the dataFlows for both the datasets to process further with the transformations and load into the sink which is SQL Server. Now the DataFow will help us to create the transformations according to the project requirement. Once after the dataFlows build, I created the the pipelines for all of those 2 datasets which redirects to the sink.
+
+
+
