@@ -67,6 +67,8 @@ Created two pipelines (pl_sqlize_cases_and_deaths and pl_sqlize_hospitals_admiss
 
 ![image](https://github.com/user-attachments/assets/b2bbc1ff-22c5-4e9f-9253-7b50926caa91)
 
+![image](https://github.com/user-attachments/assets/76e52618-e63b-4247-8d68-4ec8e22fd23b)
+
 
 ### Step 5 (Visualization):
 After we did transformation according to the project requirement, the data is in the SQL database, so that Data Analysts can query data directly from the database by using PowerBi/Tableau or any other data visualization tool for analysis purpose. Data visualization part is not done in this POC
