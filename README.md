@@ -25,12 +25,12 @@ Firstly i have used a manual uploading of a sample downloaded zipped file from E
 
 ![image](https://github.com/user-attachments/assets/6132774c-2641-4e7f-b07f-f4f968a71020)
 
-### Step 2:
+### Step 2 (Data Ingestion):
 Now I have taken 2 datasets i.e cases_and_deaths, hospial_admissions which are uploaded in the GitHub repository under Covid19-Europe-Project/main-csv-data-files (These are the same files available in ECDC website). For connecting to these files in ADF i have used  https: Linked Service(ls_http_opendata_ecdc_europa_eu) and gave my base url name to it. Since I wanted to create ingest both the datasets into ADLS gen2 at a time, I created a json file with  files and created parameterized datset and with the help of Lookup acivity and ForEach activity and i was able to successfully ingest the data into the ADLS gen2.
 
 ![image](https://github.com/user-attachments/assets/0f08f8d5-057d-473e-9f8a-86f765e3a27b)
 
-### Step 3:
+### Step 3 (Processing):
 Once right after the required data ingested into the ADLS gen2 storage, I have created the dataFlows for both the datasets to process further with the transformations and load into the sink which is SQL Server. Now the DataFow will help us to create the transformations according to the project requirement. Once after the dataFlows build, I created the the pipelines for all of those 2 datasets which redirects to the sink.
 
 
@@ -47,11 +47,11 @@ Below are the transformations in the dataflow
 2. Used Filter transormation to filter out only Europe records (continent == 'Europe' && not(isNull(country_code)))
 3. Post selecting the required columns using the Select transformation added the Pivot transformation based on the pivot key "indicator" column and the values as "Confirmed cases" and "deaths" and the pivoted column aggregate transformation is sum(daily_count). Also used group by all the other columns
 4. Did a lookup to the country lookup file to get the country 2 digit and 3 digit codes
-5. Post selecting the required columns using the select transormation , used the sink transformation to populate the data to SQL Server
+5. Post selecting the required columns using the select transormation , used the sink transformation to populate the data to Data Lake as a processed file
 
 #### Hospital and Admission Transformations:
 #### Requirement:
-To read the Hospitals and admissions csv file and lookup country file to get the 2 digit and 3 digit country codes and values. Split the file into two parts. One for Weekly and the other for Daily based on the indicator field. Pivot both daily and weekly files based on the indicator value and get the necessary counts. Sort the weekly data based on the reported_yer_week desc and Country asc and populate the data to Sql server databases separately for Daily and Weekly tables
+To read the Hospitals and admissions csv file and lookup country file to get the 2 digit and 3 digit country codes and values. Split the file into two parts. One for Weekly and the other for Daily based on the indicator field. Pivot both daily and weekly files based on the indicator value and get the necessary counts. Sort the weekly data based on the reported_yer_week desc and Country asc and populate the data to datalake
 
 Below are the transformations done:
 
@@ -60,10 +60,13 @@ Below are the transformations done:
 Similar transformations were done like the cases and deaths except below extra ones:
 1. Split Transformations to split the weekly data with daily data (indicator == "Weekly new hospital admissions per 100k" || indicator == "Weekly new ICU admissions per 100k"). The data that doesnt match the condfition goes to daily file
 2. Before joining to the Dim date source file there is the aggregation done on the file to get the week start and end date for every week with group by (year+"-W"+lpad(week_of_year,2,'0')) and week start as min(date) and week end date as max(date)
-3. On Weekly and Daily splits similar kinds of Pivot transformations are applied to get the necessary counts and finally sorting is done and populated to the Sink which is SQL Server
+3. On Weekly and Daily splits similar kinds of Pivot transformations are applied to get the necessary counts and finally sorting is done and populated to the Sink which Data Lake as a processed file
+
+### Step 4 (Sqlize)
+Created two pipelines (pl_sqlize_cases_and_deaths and pl_sqlize_hospitals_admissions) to populate data into SQL Server. For this created a copy activity to copy the data from the data lake to SQL Server. For the connection to SQL server create a linked service(ls_sql_covid_db) with sql authentication connection type for the server already created and available in the Dashboard.
 
 
-### Step 4:
+### Step 5 (Visualization):
 After we did transformation according to the project requirement, the data is in the SQL database, so that Data Analysts can query data directly from the database by using PowerBi/Tableau or any other data visualization tool for analysis purpose. Data visualization part is not done in this POC
 
 ![image](https://github.com/user-attachments/assets/8527f888-fb02-4785-b5d5-1f7030decab8)
@@ -71,6 +74,9 @@ After we did transformation according to the project requirement, the data is in
 ![image](https://github.com/user-attachments/assets/4b6433c4-7712-4cb2-9463-ac04d5d70d3a)
 
 
+Finally created triggers (Tumbling window trigger) to trigger for the particular point in time for every 
+
+![image](https://github.com/user-attachments/assets/eda80e7b-eb7e-4b48-a7e1-c135a32dc0a8)
 
 
 
