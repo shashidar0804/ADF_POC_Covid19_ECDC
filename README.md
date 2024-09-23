@@ -38,7 +38,9 @@ Once right after the required data ingested into the ADLS gen2 storage, I have c
 Cases and Deaths Dataset Transformations:
 #### Requirement:
 To read the Cases and Deaths file and filter only Europe data. In the file there are Confirmed cases count and the deaths count populated in the same column. The requirement is to pivot the the counts into two columns based on the indicator column values (Confirmed cases and deaths)
-Below are the trabsformations in the dataflow
+
+Below are the transformations in the dataflow
+
 1. Reading the raw source from the data lake
 2. Used Filter transormation to filter out only Europe records (continent == 'Europe' && not(isNull(country_code)))
 3. Post selecting the required columns using the Select transformation added the Pivot transformation based on the pivot key "indicator" column and the values as "Confirmed cases" and "deaths" and the pivoted column aggregate transformation is sum(daily_count). Also used group by all the other columns
