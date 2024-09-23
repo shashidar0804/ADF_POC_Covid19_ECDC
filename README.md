@@ -53,6 +53,16 @@ Below are the transformations in the dataflow
 #### Requirement:
 To read the Hospitals and admissions csv file and lookup country file to get the 2 digit and 3 digit country codes and values. Split the file into two parts. One for Weekly and the other for Daily based on the indicator field. Pivot both daily and weekly files based on the indicator value and get the necessary counts. Sort the weekly data based on the reported_yer_week desc and Country asc and populate the data to Sql server databases separately for Daily and Weekly tables
 
+Below are the transformations done:
+
+![image](https://github.com/user-attachments/assets/dead25d0-d732-40d6-90a0-b0d75983fd77)
+
+Similar transformations were done like the cases and deaths except below extra ones:
+1. Split Transformations to split the weekly data with daily data (indicator == "Weekly new hospital admissions per 100k" || indicator == "Weekly new ICU admissions per 100k"). The data that doesnt match the condfition goes to daily file
+2. Before joining to the Dim date source file there is the aggregation done on the file to get the week start and end date for every week with group by (year+"-W"+lpad(week_of_year,2,'0')) and week start as min(date) and week end date as max(date)
+3. On Weekly and Daily splits similar kinds of Pivot transformatopns are applied to get the necessary counts and finally sorting is done and populated to the Sink which is SQL Server
+
+
 
 
 
