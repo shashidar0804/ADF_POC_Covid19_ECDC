@@ -18,3 +18,4 @@ Below is the solution architecture of the ETL Project End to End
 ### Step1:
 Firstly i have used a manual uploading of a sample downloaded zipped file from ECDC website and uploaded that to Blob storage. Then i have used Azure Data Factory Copy activity which unzips the zip file and copies that to Azure Data lake storage (ADLS gen2)
 
+![image](https://github.com/user-attachments/assets/6132774c-2641-4e7f-b07f-f4f968a71020)
