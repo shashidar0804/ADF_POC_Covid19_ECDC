@@ -35,7 +35,7 @@ Once right after the required data ingested into the ADLS gen2 storage, I have c
 
 
 
-Cases and Deaths Dataset Transformations:
+#### Cases and Deaths Dataset Transformations:
 #### Requirement:
 To read the Cases and Deaths file and filter only Europe data. In the file there are Confirmed cases count and the deaths count populated in the same column. The requirement is to pivot the the counts into two columns based on the indicator column values (Confirmed cases and deaths)
 
@@ -48,6 +48,11 @@ Below are the transformations in the dataflow
 3. Post selecting the required columns using the Select transformation added the Pivot transformation based on the pivot key "indicator" column and the values as "Confirmed cases" and "deaths" and the pivoted column aggregate transformation is sum(daily_count). Also used group by all the other columns
 4. Did a lookup to the country lookup file to get the country 2 digit and 3 digit codes
 5. Post selecting the required columns using the select transormation , used the sink transformation to populate the data to SQL Server
+
+#### Hospital and Admission Transformations:
+#### Requirement:
+To read the Hospitals and admissions csv file and lookup country file to get the 2 digit and 3 digit country codes and values. Split the file into two parts. One for Weekly and the other for Daily based on the indicator field. Pivot both daily and weekly files based on the indicator value and get the necessary counts. Sort the weekly data based on the reported_yer_week desc and Country asc and populate the data to Sql server databases separately for Daily and Weekly tables
+
 
 
 
