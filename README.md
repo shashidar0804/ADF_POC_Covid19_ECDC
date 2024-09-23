@@ -91,6 +91,10 @@ Below is one example of the pipeline run in Monitor
 ![image](https://github.com/user-attachments/assets/3fd17255-c9a9-4c40-a07d-79f65575eaa3)
 
 
+#### Metrics
+Some metrics shown on the Azure Monitoring to track the successful runs till now
+
+![image](https://github.com/user-attachments/assets/5eab0db0-e3cb-47eb-a32e-b4572db9daef)
 
 
 
