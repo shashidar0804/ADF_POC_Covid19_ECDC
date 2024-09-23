@@ -65,6 +65,8 @@ Similar transformations were done like the cases and deaths except below extra o
 ### Step 4 (Sqlize)
 Created two pipelines (pl_sqlize_cases_and_deaths and pl_sqlize_hospitals_admissions) to populate data into SQL Server. For this created a copy activity to copy the data from the data lake to SQL Server. For the connection to SQL server create a linked service(ls_sql_covid_db) with sql authentication connection type for the server already created and available in the Dashboard.
 
+![image](https://github.com/user-attachments/assets/b2bbc1ff-22c5-4e9f-9253-7b50926caa91)
+
 
 ### Step 5 (Visualization):
 After we did transformation according to the project requirement, the data is in the SQL database, so that Data Analysts can query data directly from the database by using PowerBi/Tableau or any other data visualization tool for analysis purpose. Data visualization part is not done in this POC
