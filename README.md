@@ -11,4 +11,7 @@ Below are the types of datasets used for this project. Some of them are the file
 
 ## Solution Architecture
 
+Below is the solution architecture of the ETL Project End to End
 ![project_solution_architecture](https://github.com/user-attachments/assets/9ff2c862-0cc5-4255-9e45-6627b032a57e)
+
+I have uploaded the population_by_age.tsv.gz (zipped_file) into the Azure Blob Storage manually. After that I initialized the Azure Data Factory and created the Linked Service which connects to the Blob Storage and created DataSet points for the particular file. Along with that I created the Pipeline which has a Copy Activity that helps to Copy the Population Data from Blob storage to the ADLS gen2
