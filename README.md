@@ -8,3 +8,7 @@ Below are the types of datasets used for this project. Some of them are the file
 | cases_deaths.csv (ECDC) | This csv contains the number emerging Covid Cases and Deaths followed by the each day. |
 | hospital_admissions.csv (ECDC) | This csv file contains the Daily Hospital Admissions, Daily ICU admissions, Weekly Hospital Admissions per 100k, Weekly ICU Admissions per 100k. |
 | lookups (Blob) | Other miscellaneous files like Calendar Lookup/dim and Country lookup/dim files used. |
+
+## Solution Architecture
+
+![project_solution_architecture](https://github.com/user-attachments/assets/9ff2c862-0cc5-4255-9e45-6627b032a57e)
