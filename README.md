@@ -9,7 +9,7 @@ Below are the types of datasets used for this project. Some of them are the file
 | hospital_admissions.csv (ECDC) | This csv file contains the Daily Hospital Admissions, Daily ICU admissions, Weekly Hospital Admissions per 100k, Weekly ICU Admissions per 100k. |
 | lookups (Blob) | Other miscellaneous files like Calendar Lookup/dim and Country lookup/dim files used. |
 
-Below are the Azure Services that i have created and tagged under my dashboard
+Below are the Azure Services that i have created and tagged under my dashboard for this ETL POC
 
 ![image](https://github.com/user-attachments/assets/ceabee6c-291c-44f8-8b1b-6e52971995b4)
 
@@ -26,4 +26,4 @@ Firstly i have used a manual uploading of a sample downloaded zipped file from E
 ![image](https://github.com/user-attachments/assets/6132774c-2641-4e7f-b07f-f4f968a71020)
 
 ### Step 2:
-Now I have rest 3 datasets i.e cases_and_deaths, hospial_admissions, testing_data that are successfully uploaded in the GitHub repository under Covid19-Europe-Project /main-csv-data-files. Now I have to connect these files to the ADF through https: Linked Service and gave my base url name to it. Since I wanted to create ingest all these 3 datasets into ADLS gen2 at a time, I created a json file with 3 files and created parameterized datset and with the help of Lookup acivity and ForEach activity I was able to successfully ingest the data into the ADLS gen2.
+Now I have taken 2 datasets i.e cases_and_deaths, hospial_admissions which are uploaded in the GitHub repository under Covid19-Europe-Project/main-csv-data-files (These are the same files available in ECDC website). For connecting to these files in ADF i have used  https: Linked Service(ls_http_opendata_ecdc_europa_eu) and gave my base url name to it. Since I wanted to create ingest both the datasets into ADLS gen2 at a time, I created a json file with  files and created parameterized datset and with the help of Lookup acivity and ForEach activity and i was able to successfully ingest the data into the ADLS gen2.
